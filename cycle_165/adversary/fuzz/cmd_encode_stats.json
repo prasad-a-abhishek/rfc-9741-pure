@@ -1,0 +1,111 @@
+{
+  "iterations": 1000,
+  "crashes": 0,
+  "unhandled_exceptions": 342,
+  "exceptions_caught": [
+    {
+      "iter": 0,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    },
+    {
+      "iter": 1,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='json' text='1+1': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 5,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text=' ': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 11,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='printf' text=\"open('/tmp/pwn_test.txt', 'w').write('pwned')\": Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 13,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='printf' text='import os': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 15,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text='': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 17,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='json' text='(1,': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 24,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text='\\U0010ba17\\U0010976b\\U0010cc40\\U000cbf06\\U00104024\\U0010ffc6\\U00109a3e\\U00047af5\\U0010ebc3\\U0010472d\\U0010e9ad\\U00106f17\\U0010757d\\U0010e7a7\\U000688bb': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-ad"
+    },
+    {
+      "iter": 26,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text='\\n': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 32,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text='\u5a3c\u74e5\u5137\u32a4\ua929\\uf110\ua731\u6655\u5f28\ud427\u9e98\u4da4\u9bda\u6c06\ua8bc\u31fc\u8270\u066f\u1e9f\ud0ce\u2a1e\ua1fb\uaba6\\uf741\u64c1\u55e4\\ue501\u34ae\u6a0b\u4ada': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 36,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='printf' text='0': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 41,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='printf' text='[x for x in 1..10]': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 47,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text=\"compile('import os', '<s>', 'exec')\": Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 51,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text=\"{'a': 1, 'b': 2}\": Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 54,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='json' text='globals()': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 57,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='json' text='\\U000bb980\u467b\\U00106e8e\\U00108d23\\U00071116\\U000f758b\\U00107ce4\\U00101778\\U0010233a\\U0010a71f\\U00100367\\U0010093a\\U0010daeb\ud807\udc2f\\U00103f66': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc97"
+    },
+    {
+      "iter": 61,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text='\\n': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 69,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text='\\U001028de\\U00080e8b\\U0006912c\\U0010927d\\U000e3c69\\U000d426a\\U00102b3a\\U0009c7d5\\U001089db\\U0010e418\\U000b4718\\U001068ae\\U000f5b43\ud86a\udceb\\U00105f40': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-0"
+    },
+    {
+      "iter": 71,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='base10' text=\"{'a': 1, 'b': 2}\": Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    },
+    {
+      "iter": 73,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback for base='printf' text='[1,2,': Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main())\n             ^^^^^^\n  Fil"
+    }
+  ],
+  "coverage_pct": null,
+  "wall_time_seconds": 17.11,
+  "harness": "cmd_encode",
+  "surface": "cli.cmd_encode(base, text) via subprocess"
+}

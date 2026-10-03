@@ -1,0 +1,10 @@
+{
+  "iterations": 1000,
+  "crashes": 0,
+  "unhandled_exceptions": 0,
+  "exceptions_caught": [],
+  "coverage_pct": null,
+  "wall_time_seconds": 0.004,
+  "harness": "decode_b45",
+  "surface": "decode_b45(str) -> bytes | ERROR"
+}

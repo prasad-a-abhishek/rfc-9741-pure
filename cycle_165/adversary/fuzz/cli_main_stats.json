@@ -1,0 +1,111 @@
+{
+  "iterations": 1000,
+  "crashes": 0,
+  "unhandled_exceptions": 304,
+  "exceptions_caught": [
+    {
+      "iter": 3,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    },
+    {
+      "iter": 6,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    },
+    {
+      "iter": 10,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 12,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    },
+    {
+      "iter": 13,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 14,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    },
+    {
+      "iter": 17,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    },
+    {
+      "iter": 18,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 19,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 22,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 23,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 24,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 31,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    },
+    {
+      "iter": 41,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 56,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    },
+    {
+      "iter": 59,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    },
+    {
+      "iter": 60,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 61,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 66,
+      "type": "AssertionError",
+      "msg": "CLI crashed with traceback: Traceback (most recent call last):\n  File \"/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py\", line 133, in <module>\n    sys.exit(main("
+    },
+    {
+      "iter": 68,
+      "type": "AssertionError",
+      "msg": "subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte"
+    }
+  ],
+  "coverage_pct": null,
+  "wall_time_seconds": 16.069,
+  "harness": "cli_main",
+  "surface": "cli.main() full argv + stdin"
+}
