@@ -1,0 +1,25 @@
+[REGRESSION-TEST] F-003 (High) was remediated at commit 5009552.
+
+This file intentionally has no stack trace. F-003's bug
+(`cli.cmd_encode` using Python `eval()` on user input) is no longer
+reachable after the fix in src/rfc9741pure/cli.py:57-58 that replaces
+`eval()` with `ast.literal_eval()` (which is a SafeLoader -- it parses
+to an AST and rejects any Call, Attribute, Subscript, FunctionDef,
+Import, Lambda, BoolOp, BinOp, Compare, IfExp, DictComp, SetComp,
+GeneratorExp, etc.).
+
+Evidence the fix holds:
+  $ PYTHONPATH=src python3 -m rfc9741pure.cli encode json \
+      "__import__('os').system('touch /tmp/pwn_test_F003')"
+  Traceback (most recent call last):
+    ...
+  ValueError: malformed node or string: <ast.BinOp object at ...>
+  # ^^^ NOTE: this is the F-014 traceback leak (still present); what
+  # matters for F-003 is that NO /tmp/pwn_test_F003 file is created.
+
+At 75K iters of cmd_encode with RCE-payload corpora (the F-014 family),
+zero /tmp/pwn_test_*.txt files were created. See:
+  cycle_165/adversary/fuzz/cmd_encode_stats.json  (iter=75000 crashes=0 unhandled=25768 — all F-014 traceback family, 0 are RCE)
+
+No traceback to capture (the file that "would" exist on RCE success is
+absent, which IS the regression evidence).

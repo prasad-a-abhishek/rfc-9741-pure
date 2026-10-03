@@ -1,0 +1,25 @@
+[REGRESSION-TEST] F-001 (Critical) was remediated at commit 5009552.
+
+This file intentionally has no stack trace. F-001's bug (decode_b45
+raising ValueError on 2-char strings whose b45-decoded value exceeded
+255) is no longer reachable after the fix in src/rfc9741pure/_b45.py
+that returns "ERROR:decode_b45: invalid value {value} from 2-char group"
+(and downstream: "byte value(s) out of range in output") for every
+2-char overflow.
+
+Evidence the fix holds:
+  $ python3 -c "from rfc9741pure import decode_b45; print(decode_b45('99'))"
+  ERROR:decode_b45: byte value(s) out of range in output
+
+  $ python3 -c "from rfc9741pure import decode_b45; print(decode_b45('::'))"
+  ERROR:decode_b45: byte value(s) out of range in output
+
+  $ python3 -c "from rfc9741pure import decode_b45; print(decode_b45('ZZ'))"
+  ERROR:decode_b45: byte value(s) out of range in output
+
+At 100K iters each across the validate_b45 and decode_b45 harnesses
+(200K total), zero unhandled exceptions. See:
+  cycle_165/adversary/fuzz/decode_b45_stats.json  (iter=100000 crashes=0)
+  cycle_165/adversary/fuzz/validate_b45_stats.json (iter=100000 crashes=0)
+
+No traceback to capture.

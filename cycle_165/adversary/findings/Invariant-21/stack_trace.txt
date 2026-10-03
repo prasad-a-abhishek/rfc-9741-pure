@@ -1,0 +1,11 @@
+[totality-test] Invariant 21 holds.
+
+This file intentionally has no stack trace. The Invariant 21 contract
+(every public function returns a structured error for any wrong-typed
+input) holds across 100K fuzz iterations: zero unhandled exceptions.
+
+If the contract were violated, the captured exceptions_caught[] list in
+cycle_165/adversary/fuzz/invariant21_stats.json would contain
+{iter, type, msg} entries. It is empty.
+
+No traceback to capture.

@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File ".../subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".../subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds)
+  File ".../subprocess.py", line 1885, in _execute_child
+    self.pid = _fork_exec(
+               ^^^^^^^^^^^^^^
+ValueError: embedded null byte
+
+(Stack is the standard CPython subprocess.run guard. The harness in
+cycle_165/adversary/fuzz/{cmd_encode,cli_main}.py catches this
+ValueError as part of its 'subprocess runner failed' branch and
+re-raises AssertionError("subprocess runner failed: SUBPROCESS_ERROR:
+ValueError: embedded null byte"). The library CLI is NEVER invoked —
+the test dies before fork() succeeds.)

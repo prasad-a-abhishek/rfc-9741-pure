@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py", line 133, in <module>
+    sys.exit(main())
+             ^^^^^^^
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py", line 113, in main
+    return cmd_encode(sys.argv[2], sys.argv[3])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py", line 64, in cmd_encode
+    result = fn(text)
+             ^^^^^^^^
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py", line 58, in <lambda>
+    "json": lambda t: encode_json(ast.literal_eval(t)),       # literal_eval: no calls/imports
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ast.py", line 110, in literal_eval
+    return _convert(node_or_string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ast.py", line 109, in _convert
+    return _convert_signed_num(node)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ast.py", line 83, in _convert_signed_num
+    return _convert_num(node)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/ast.py", line 74, in _convert_num
+    _raise_malformed_node(node)
+  File "/usr/local/lib/python3.11/ast.py", line 71, in _raise_malformed_node
+    raise ValueError(msg + f': {node!r}')
+ValueError: malformed node or string on line 1: <ast.BinOp object at 0xffff8695e1a0>
+
+(stderr captured; backend's Python 3.11 ast.literal_eval raised ValueError on the
+binary operator `1+1`. Note: exit code was 1; the traceback came from Python's
+default unhandled-exception behaviour, not from the rfc9741pure CLI's own error
+handler.)

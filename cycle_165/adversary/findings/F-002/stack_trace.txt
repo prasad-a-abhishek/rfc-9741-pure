@@ -1,0 +1,20 @@
+[REGRESSION-TEST] F-002 (High) was remediated at commit 5009552.
+
+This file intentionally has no stack trace. F-002's bug (decode_b45
+silently truncating 3-char group values >= 65536 by emitting
+(value >> 8) & 0xFF and value & 0xFF as two bytes — which could
+break the byte stream invariant for downstream consumers) is no
+longer reachable after the fix in src/rfc9741pure/_b45.py that
+returns "ERROR:decode_b45: 3-char value {value} exceeds 16-bit" for
+every 3-char group whose value would have been >= 65536.
+
+Evidence the fix holds:
+  $ python3 -c "from rfc9741pure import decode_b45; print(decode_b45('ZZZ'))"
+  ERROR:decode_b45: 3-char value 72485 exceeds 16-bit
+
+At 100K iters each across the validate_b45 and decode_b45 harnesses
+(200K total), zero unhandled exceptions. See:
+  cycle_165/adversary/fuzz/decode_b45_stats.json  (iter=100000 crashes=0)
+  cycle_165/adversary/fuzz/validate_b45_stats.json (iter=100000 crashes=0)
+
+No traceback to capture.

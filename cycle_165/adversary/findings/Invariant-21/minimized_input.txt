@@ -1,0 +1,21 @@
+[totality-test] Invariant 21 holds.
+
+This file is intentionally empty. The minimised payload for Invariant 21
+is "any wrong-typed value", so a single concrete input would not be
+representative of the contract being tested.
+
+The contract under test: every public function in rfc9741pure.__all__
+must return a structured error (False / "ERROR:..." / None) for any
+input type -- never raise ValueError, TypeError, KeyError,
+IndexError, or AttributeError. This is the totality contract that
+enables CDDL validators to safely pipe arbitrary user input through
+the library.
+
+Evidence the contract holds:
+  cycle_165/adversary/fuzz/invariant21_stats.json
+    {"iterations": 100000, "crashes": 0, "unhandled_exceptions": 0,
+     "exceptions_caught": [], "coverage_pct": null,
+     "wall_time_seconds": 0.226}
+
+100K iterations with FDP-driven (correct arity, wrong type) call
+attempts across all 23 public functions. Zero unhandled exceptions.

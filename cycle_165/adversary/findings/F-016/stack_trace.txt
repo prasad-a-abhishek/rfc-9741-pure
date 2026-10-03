@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py", line 133, in <module>
+    sys.exit(main())
+             ^^^^^^^
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py", line 113, in main
+    return cmd_encode(sys.argv[2], sys.argv[3])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py", line 64, in cmd_encode
+    result = fn(text)
+             ^^^^^^^^
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py", line 56, in <lambda>
+    "base10": lambda t: encode_base10(int(t)),
+                                      ^^^^^^
+ValueError: invalid literal for int() with base 10: ' '
+
+(Captured from CPython 3.11. Single space character is enough to trip
+int(' ') and exit with code 1 — no input payload data is leaked.)
