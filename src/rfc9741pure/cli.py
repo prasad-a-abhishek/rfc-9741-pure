@@ -9,6 +9,7 @@ Usage:
 Bases: b64u, b64c, hex, b45, base10, printf, json
 """
 
+import ast
 import sys
 from typing import Optional
 
@@ -53,8 +54,8 @@ def cmd_encode(base: str, text: str) -> int:
         "hex": lambda t: encode_hex(t.encode("utf-8")),
         "b45": lambda t: encode_b45(t.encode("utf-8")),
         "base10": lambda t: encode_base10(int(t)),
-        "printf": lambda t: format_printf(*eval(t)),  # nosec — eval for demo; not from untrusted input
-        "json": lambda t: encode_json(eval(t)),        # nosec
+        "printf": lambda t: format_printf(*ast.literal_eval(t)),  # literal_eval: no calls/imports
+        "json": lambda t: encode_json(ast.literal_eval(t)),       # literal_eval: no calls/imports
     }
     fn = dispatch.get(base)
     if fn is None:

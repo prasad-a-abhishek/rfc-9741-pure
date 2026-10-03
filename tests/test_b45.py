@@ -109,3 +109,47 @@ class TestB45RoundTrip:
         enc = encode_b45(data)
         dec = decode_b45(enc)
         assert dec == data, f"round-trip failed for {data!r}: enc={enc!r}, dec={dec!r}"
+
+
+# ── VULN_AUDIT F-001 / F-002 regression tests ─────────────────────────────────
+
+class TestB45VulnAuditFixes:
+    """Regression tests for VULN_AUDIT findings F-001 (Critical) and F-002 (High)."""
+
+    def test_decode_b45_2char_overflow_no_raise(self):
+        """F-001: decode_b45('99') -> value=414, must NOT raise ValueError.
+
+        Per the module docstring, these are TOTAL functions — never raise on
+        arbitrary input. 9 + 9*45 = 414 exceeds the valid 1-byte range [0..255].
+        Must return a structured ERROR string instead.
+        """
+        result = decode_b45("99")
+        assert isinstance(result, str), f"expected ERROR string, got {result!r}"
+        assert result.startswith("ERROR:"), f"expected ERROR string, got {result!r}"
+        # Accept any ERROR message wording — the contract is "structured error, no raise"
+        assert "ERROR" in result
+        assert "decode_b45" in result
+        assert "out of range" in result or "414" in result or "invalid" in result.lower() or "2-char" in result
+
+    def test_decode_b45_2char_overflow_other_examples(self):
+        """F-001: many 2-char base45 encodings overflow 1-byte range [0..255].
+
+        Valid 2-char max = 'U5' = 255. 'V5' = 5+5*45=230, no wait.
+        Let me check: '99' = 9+9*45=414, '89' = 8+9*45=413.
+        All pairs where d >= 6 and c+d*45 > 255 overflow.
+        """
+        # 'ZZ' = 35+35*45 = 35+1575 = 1610 — definitely overflows
+        result = decode_b45("ZZ")
+        assert isinstance(result, str) and result.startswith("ERROR:")
+
+    def test_decode_b45_3char_overflow_rejected(self):
+        """F-002: decode_b45('ZZZ') -> arithmetic value 72485, exceeds 16-bit.
+
+        Per RFC 9285 §4.2, 3-char encodings produce 16-bit values [0..65535].
+        'ZZZ' = 35 + 35*45 + 35*2025 = 72485 which silently truncated to
+        b'\\x1b\\xc5' before the fix. Now it must return a structured error.
+        """
+        result = decode_b45("ZZZ")
+        assert isinstance(result, str), f"expected ERROR string, got {result!r}"
+        assert result.startswith("ERROR:"), f"expected ERROR string, got {result!r}"
+        assert "exceeds 16-bit" in result or "65536" in result or "72485" in result

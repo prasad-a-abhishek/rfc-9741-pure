@@ -2,6 +2,7 @@
 Tests for rfc9741pure CLI.
 """
 
+import os
 import pytest
 import sys
 from io import StringIO
@@ -57,6 +58,67 @@ class TestCmdEncode:
             sys.stdout = old_stdout
         assert result == 0
         assert out.getvalue().strip() == "42"
+
+
+class TestCliEvalInjectionRejected:
+    """Regression tests for VULN_AUDIT F-003 (High): CLI eval() RCE prevention.
+
+    The CLI previously used bare eval() for printf/json dispatch, allowing
+    arbitrary code execution (CWE-94/CWE-95). These are now replaced with
+    ast.literal_eval which only parses Python literals.
+    """
+
+    def test_cli_eval_injection_rejected(self):
+        """F-003: cmd_encode('json', ...) with __import__ must raise ValueError.
+
+        ast.literal_eval refuses __import__ expressions and raises ValueError.
+        No file must be written to disk.
+        """
+        pwn_path = "/tmp/rfc9741pure_pwn_test.txt"
+        # Ensure it doesn't already exist
+        if os.path.exists(pwn_path):
+            os.unlink(pwn_path)
+
+        with pytest.raises(ValueError):
+            cmd_encode("json", "__import__('os').system('echo PWNED > /tmp/rfc9741pure_pwn_test.txt')")
+
+        # No file must have been written
+        assert not os.path.exists(pwn_path), "RCE succeeded: file was written!"
+
+    def test_cli_printf_injection_rejected(self):
+        """F-003: cmd_encode('printf', ...) with __import__ must raise ValueError."""
+        pwn_path = "/tmp/rfc9741pure_pwn_test2.txt"
+        if os.path.exists(pwn_path):
+            os.unlink(pwn_path)
+
+        with pytest.raises(ValueError):
+            cmd_encode("printf", "__import__('os').system('echo PWNED > /tmp/rfc9741pure_pwn_test2.txt')")
+
+        assert not os.path.exists(pwn_path), "RCE succeeded: file was written!"
+
+    def test_cli_printf_legitimate_use(self):
+        """F-003: ast.literal_eval still serves the legitimate printf demo use-case."""
+        out = StringIO()
+        old_stdout = sys.stdout
+        sys.stdout = out
+        try:
+            result = cmd_encode("printf", "'%s', 'hello'")
+        finally:
+            sys.stdout = old_stdout
+        assert result == 0
+        assert out.getvalue().strip() == "hello"
+
+    def test_cli_json_legitimate_use(self):
+        """F-003: ast.literal_eval still serves the legitimate json demo use-case."""
+        out = StringIO()
+        old_stdout = sys.stdout
+        sys.stdout = out
+        try:
+            result = cmd_encode("json", "'hello'")
+        finally:
+            sys.stdout = old_stdout
+        assert result == 0
+        assert out.getvalue().strip() == '"hello"'
 
 
 class TestCmdDecode:

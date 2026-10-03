@@ -80,14 +80,23 @@ def decode_b45(target: str) -> bytes:
                 v2 = INV.get(target[i + 2], -1)
                 if v2 < 0:
                     return _err(f"decode_b45: invalid character '{target[i+2]}'")
-                # 3-char group: value = c + d*45 + e*45^2
+                # 3-char group: value = c + d*45 + e*45*45
                 value = v0 + v1 * 45 + v2 * 45 * 45
-                out.append((value >> 8) & 0xFF)  # high byte
-                out.append(value & 0xFF)          # low byte
+                # F-002 fix: 3-char values MUST be < 65536 per RFC 9285 §4.2
+                if value >= 65536:
+                    return _err(f"decode_b45: 3-char value {value} exceeds 16-bit")
+                try:
+                    out.append((value >> 8) & 0xFF)  # high byte
+                    out.append(value & 0xFF)          # low byte
+                except ValueError:
+                    return _err(f"decode_b45: invalid byte value {value}")
                 i += 3
             else:
                 # Only 2 chars left: must be 2-char encoding
                 value = v0 + v1 * 45
+                # F-001 fix: 2-char values must be < 256 (single byte)
+                if value >= 256:
+                    return _err(f"decode_b45: invalid value {value} from 2-char group")
                 out.append(value)
                 i += 2
         elif i + 1 == L:
@@ -100,7 +109,10 @@ def decode_b45(target: str) -> bytes:
             value = v0 + v1 * 45
             out.append(value)
             i += 2
-    return bytes(out)
+    try:
+        return bytes(out)
+    except ValueError:
+        return _err(f"decode_b45: byte value(s) out of range in output")
 
 
 def validate_b45(target: str, controller: bytes) -> bool:
