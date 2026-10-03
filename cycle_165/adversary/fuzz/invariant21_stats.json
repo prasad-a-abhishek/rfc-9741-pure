@@ -1,10 +1,10 @@
 {
-  "iterations": 1000,
+  "iterations": 100000,
   "crashes": 0,
   "unhandled_exceptions": 0,
   "exceptions_caught": [],
   "coverage_pct": null,
-  "wall_time_seconds": 0.002,
+  "wall_time_seconds": 0.226,
   "harness": "invariant21",
   "surface": "23 public functions x 9 wrong-typed payloads"
 }

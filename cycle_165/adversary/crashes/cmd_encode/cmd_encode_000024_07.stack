@@ -1,0 +1,4 @@
+iter: 24
+type: AssertionError
+msg: CLI crashed with traceback for base='base10' text='\U0010ba17\U0010976b\U0010cc40\U000cbf06\U00104024\U0010ffc6\U00109a3e\U00047af5\U0010ebc3\U0010472d\U0010e9ad\U00106f17\U0010757d\U0010e7a7\U000688bb': Traceback (most recent call last):
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-ad

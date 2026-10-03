@@ -1,0 +1,3 @@
+iter: 68
+type: AssertionError
+msg: subprocess runner failed: SUBPROCESS_ERROR: ValueError: embedded null byte

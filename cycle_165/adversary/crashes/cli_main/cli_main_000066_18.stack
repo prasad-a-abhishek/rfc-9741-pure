@@ -1,0 +1,5 @@
+iter: 66
+type: AssertionError
+msg: CLI crashed with traceback: Traceback (most recent call last):
+  File "/root/projects/rfc-9741-pure/.worktrees/t_cycle165-adversary-02/src/rfc9741pure/cli.py", line 133, in <module>
+    sys.exit(main(

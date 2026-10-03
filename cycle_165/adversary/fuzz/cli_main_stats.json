@@ -1,7 +1,7 @@
 {
-  "iterations": 1000,
+  "iterations": 75000,
   "crashes": 0,
-  "unhandled_exceptions": 304,
+  "unhandled_exceptions": 22088,
   "exceptions_caught": [
     {
       "iter": 3,
@@ -105,7 +105,7 @@
     }
   ],
   "coverage_pct": null,
-  "wall_time_seconds": 16.069,
+  "wall_time_seconds": 1386.273,
   "harness": "cli_main",
   "surface": "cli.main() full argv + stdin"
 }

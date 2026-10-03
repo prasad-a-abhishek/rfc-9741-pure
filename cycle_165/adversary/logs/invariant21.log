@@ -1,0 +1,10 @@
+INFO: Instrumenting rfc9741pure
+INFO: Instrumenting rfc9741pure._b64
+INFO: Instrumenting base64
+INFO: Instrumenting struct
+INFO: Instrumenting rfc9741pure._hex
+INFO: Instrumenting rfc9741pure._b45
+INFO: Instrumenting rfc9741pure._base10
+INFO: Instrumenting rfc9741pure._printf
+INFO: Instrumenting rfc9741pure._json
+invariant21: 100000 iters, 0 crashes, 0 unhandled, 0.226s

@@ -1,10 +1,10 @@
 {
-  "iterations": 1000,
+  "iterations": 100000,
   "crashes": 0,
   "unhandled_exceptions": 0,
   "exceptions_caught": [],
   "coverage_pct": null,
-  "wall_time_seconds": 0.015,
+  "wall_time_seconds": 1.604,
   "harness": "encode_b45",
   "surface": "encode_b45(bytes) -> str | ERROR"
 }

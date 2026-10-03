@@ -1,7 +1,7 @@
 {
-  "iterations": 1000,
+  "iterations": 75000,
   "crashes": 0,
-  "unhandled_exceptions": 342,
+  "unhandled_exceptions": 25768,
   "exceptions_caught": [
     {
       "iter": 0,
@@ -105,7 +105,7 @@
     }
   ],
   "coverage_pct": null,
-  "wall_time_seconds": 17.11,
+  "wall_time_seconds": 1455.115,
   "harness": "cmd_encode",
   "surface": "cli.cmd_encode(base, text) via subprocess"
 }

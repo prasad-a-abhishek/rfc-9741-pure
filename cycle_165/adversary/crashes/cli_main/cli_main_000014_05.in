@@ -1,0 +1,3 @@
+# harness=cli_main iter=14
+# F-014 family: CLI uncaught exception (literal_eval, int(), or other)
+# See cli_main_000014_05.stack for the captured assertion message.

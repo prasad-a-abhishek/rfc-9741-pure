@@ -1,0 +1,3 @@
+# harness=cmd_encode iter=11
+# F-014 family: CLI uncaught exception (literal_eval, int(), or other)
+# See cmd_encode_000011_03.stack for the captured assertion message.

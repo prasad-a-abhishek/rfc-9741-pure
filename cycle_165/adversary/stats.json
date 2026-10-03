@@ -1,0 +1,120 @@
+{
+  "campaign_id": "cycle_165/adv_retry/T3",
+  "target": "rfc-9741-pure",
+  "target_version": "0.1.0",
+  "target_commit": "5009552",
+  "fuzzer": "atheris (libFuzzer) + deterministic PRNG smoke",
+  "campaign_date": "2026-10-03",
+  "wall_time_total_seconds": 2844.052,
+  "wall_time_total_human": "47m24s",
+  "totals": {
+    "iterations": 550000,
+    "crashes": 0,
+    "unhandled_exceptions": 47856,
+    "harnesses": 6
+  },
+  "aggregate_meets_threshold_450k": true,
+  "surfaces": [
+    {
+      "harness": "validate_b45",
+      "surface": "validate_b45(str, bytes) | decode_b45(str) | encode_b45(bytes)",
+      "seed": "0xC0DE9744",
+      "iterations": 100000,
+      "crashes": 0,
+      "unhandled_exceptions": 0,
+      "wall_time_seconds": 0.427,
+      "iterations_per_second": 234192.0,
+      "exceptions_captured": 0
+    },
+    {
+      "harness": "decode_b45",
+      "surface": "decode_b45(str) -> bytes | ERROR",
+      "seed": "0xC0DE9742",
+      "iterations": 100000,
+      "crashes": 0,
+      "unhandled_exceptions": 0,
+      "wall_time_seconds": 0.407,
+      "iterations_per_second": 245700.2,
+      "exceptions_captured": 0
+    },
+    {
+      "harness": "encode_b45",
+      "surface": "encode_b45(bytes) -> str | ERROR",
+      "seed": "0xC0DE9741",
+      "iterations": 100000,
+      "crashes": 0,
+      "unhandled_exceptions": 0,
+      "wall_time_seconds": 1.604,
+      "iterations_per_second": 62344.1,
+      "exceptions_captured": 0
+    },
+    {
+      "harness": "cmd_encode",
+      "surface": "cli.cmd_encode(base, text) via subprocess",
+      "seed": "0xC0DE9743",
+      "iterations": 75000,
+      "crashes": 0,
+      "unhandled_exceptions": 25768,
+      "wall_time_seconds": 1455.115,
+      "iterations_per_second": 51.5,
+      "exceptions_captured": 20
+    },
+    {
+      "harness": "invariant21",
+      "surface": "23 public functions x 9 wrong-typed payloads",
+      "seed": "0xC0DE9745",
+      "iterations": 100000,
+      "crashes": 0,
+      "unhandled_exceptions": 0,
+      "wall_time_seconds": 0.226,
+      "iterations_per_second": 442477.9,
+      "exceptions_captured": 0
+    },
+    {
+      "harness": "cli_main",
+      "surface": "cli.main() full surface via subprocess",
+      "seed": "0xC0DE9746",
+      "iterations": 75000,
+      "crashes": 0,
+      "unhandled_exceptions": 22088,
+      "wall_time_seconds": 1386.273,
+      "iterations_per_second": 54.1,
+      "exceptions_captured": 20
+    }
+  ],
+  "findings_summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low_new": 1,
+    "low_known_reproduced": 1,
+    "info_harness_noise": 1,
+    "regression_tests_passed": 4
+  },
+  "harness_seed_locks": {
+    "validate_b45": {
+      "seed": "0xC0DE9744",
+      "rationale": "deterministic PRNG in --iterations smoke mode; per-harness constant for reproducibility"
+    },
+    "decode_b45": {
+      "seed": "0xC0DE9742",
+      "rationale": "deterministic PRNG in --iterations smoke mode; per-harness constant for reproducibility"
+    },
+    "encode_b45": {
+      "seed": "0xC0DE9741",
+      "rationale": "deterministic PRNG in --iterations smoke mode; per-harness constant for reproducibility"
+    },
+    "cmd_encode": {
+      "seed": "0xC0DE9743",
+      "rationale": "deterministic PRNG in --iterations smoke mode; per-harness constant for reproducibility"
+    },
+    "invariant21": {
+      "seed": "0xC0DE9745",
+      "rationale": "deterministic PRNG in --iterations smoke mode; per-harness constant for reproducibility"
+    },
+    "cli_main": {
+      "seed": "0xC0DE9746",
+      "rationale": "deterministic PRNG in --iterations smoke mode; per-harness constant for reproducibility"
+    }
+  }
+}
