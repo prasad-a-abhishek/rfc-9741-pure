@@ -10,7 +10,7 @@
 ## Quick Start
 
 ```bash
-pip install git+https://github.com/prasad-a-abhishek/rfc-9741-pure.git
+pip install rfc9741-pure
 ```
 
 ```python
